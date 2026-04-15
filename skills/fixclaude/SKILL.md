@@ -64,10 +64,10 @@ If **yes** — load **`references/session-timer.md`** for details. First use `Cr
 
 - **Cron expression:** `"17 */3 * * *"` (every 3 hours, offset from :00 per best practices)
 - **Prompt:** `"Session timer bump — keeping the rolling usage window active. No action needed."`
-- **Durable:** `false` (session-only — the timer lives for this session and auto-expires after 7 days)
+- **Durable:** `true` (persists to `.claude/scheduled_tasks.json` — survives session restarts and auto-expires after 7 days)
 - **Recurring:** `true`
 
-After creating, confirm to the user: the timer is set, it runs every 3 hours in the background, and it keeps the rolling 5-hour rate limit window active so they can get more done during long sessions. Mention that it auto-expires after 7 days and only runs while Claude Code is open.
+After creating, confirm to the user: the timer is set, it runs every 3 hours in the background, and it keeps the rolling 5-hour rate limit window active so they can get more done during long sessions. Mention that it auto-expires after 7 days and persists across session restarts. The user may want to re-run the wizard after 7 days to renew the timer.
 
 ### Step 4: Optional Plugin Improvements
 

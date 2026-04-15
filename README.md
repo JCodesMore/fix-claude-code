@@ -74,7 +74,7 @@ Every step is explained in plain language. No config files to hunt down, no valu
 
 | Feature | What it does |
 |---------|-------------|
-| Session timer bump | Automatic 3-hour ping that keeps the rolling 5-hour rate limit window active for more usage during long sessions |
+| Session timer bump | Persistent 3-hour ping that keeps the rolling 5-hour rate limit window active — survives restarts, auto-expires after 7 days |
 
 ### Optional Plugins
 
