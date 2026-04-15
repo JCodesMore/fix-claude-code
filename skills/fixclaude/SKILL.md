@@ -1,8 +1,7 @@
 ---
 name: fixclaude
-description: This skill should be used when the user asks to "fix claude code", "fix claude", "optimize claude", "improve claude performance", "fix my settings", "setup claude code", "configure claude code", "claude code settings", "tune claude", "fixclaude", "claude is broken", "claude is slow", "claude is lazy", "claude is not working", "make claude better", or wants to optimize their Claude Code installation for maximum performance. Provides an interactive wizard walking through performance settings and optional plugin improvements step by step.
+description: This skill should be used when the user asks to "fix claude code", "fix claude", "optimize claude", "improve claude performance", "fix my settings", "setup claude code", "configure claude code", "claude code settings", "tune claude", "fixclaude", "claude is broken", "claude is slow", "claude is lazy", "claude is not working", "make claude better", "keep session alive", "session timer", "rate limit", "avoid rate limits", "rate limited", "fix claude code settings", or wants to optimize their Claude Code installation for maximum performance. Provides an interactive wizard walking through performance settings, rate limit optimization via session timer bump, and optional plugin improvements step by step.
 argument-hint: (no arguments needed)
-allowed-tools: Read, Write, Edit, Bash, AskUserQuestion, Grep, Glob
 ---
 
 # Fix Claude Code — Interactive Performance Wizard
@@ -53,11 +52,28 @@ On confirmation, apply settings to `~/.claude/settings.json`. Read the file firs
 
 After applying, show a short confirmation: what changed.
 
-### Step 3: Optional Plugin Improvements
+### Step 3: Session Timer Bump (Rate Limit Optimizer)
+
+After applying core fixes, offer to set up an automatic session timer bump.
+
+Use **AskUserQuestion** to ask: *"Would you like to set up a session timer bump? Claude Code uses a rolling 5-hour usage window for rate limits. This schedules a lightweight ping every 3 hours to keep that window rolling, so you get more usage out of long sessions before hitting rate limits. (yes/no)"*
+
+If **no** — skip to Step 4.
+
+If **yes** — load **`references/session-timer.md`** for details. First use `CronList` to check for an existing session timer bump (avoid duplicates if the wizard runs twice). If none exists, use `CronCreate` to schedule the recurring bump:
+
+- **Cron expression:** `"17 */3 * * *"` (every 3 hours, offset from :00 per best practices)
+- **Prompt:** `"Session timer bump — keeping the rolling usage window active. No action needed."`
+- **Durable:** `false` (session-only — the timer lives for this session and auto-expires after 7 days)
+- **Recurring:** `true`
+
+After creating, confirm to the user: the timer is set, it runs every 3 hours in the background, and it keeps the rolling 5-hour rate limit window active so they can get more done during long sessions. Mention that it auto-expires after 7 days and only runs while Claude Code is open.
+
+### Step 4: Optional Plugin Improvements
 
 Use **AskUserQuestion** to ask: *"Would you like to explore optional plugin improvements? These add a status dashboard, live docs, browser testing, and more. (yes/no)"*
 
-If **no** — skip to Step 4.
+If **no** — skip to Step 5.
 
 If **yes** — load **`references/optional-plugins.md`** and walk through each tool one at a time:
 
@@ -74,7 +90,7 @@ For each tool:
 - For Chrome: guide the user through browser extension setup and update `~/.claude.json` (note: this is a *different* file from `~/.claude/settings.json`)
 - Confirm success or report any issues
 
-### Step 4: Summary
+### Step 5: Summary
 
 Load **`references/summary-template.md`** for the recap format.
 
@@ -97,5 +113,6 @@ End with an encouraging message — the user's Claude Code is now optimized.
 
 For detailed information loaded on-demand:
 - **`references/core-settings.md`** — Deep explanations, caveats, and sources for each core fix
+- **`references/session-timer.md`** — Rate limit optimization via session timer bump, cron syntax, and caveats
 - **`references/optional-plugins.md`** — Install instructions and setup guides for each optional tool
 - **`references/summary-template.md`** — Format template for the end-of-wizard recap

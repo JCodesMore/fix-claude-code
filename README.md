@@ -49,8 +49,9 @@ The wizard walks you through every step:
 
 1. **Detects current settings** and shows what's missing
 2. **Applies 8 proven performance fixes** -- max effort, deep thinking, smooth rendering, agent teams, and more
-3. **Optionally installs companion tools** -- Claude HUD, Context7, Playwright, Caveman, Chrome integration
-4. **Shows a clear summary** of everything that changed
+3. **Sets up a session timer bump** -- keeps the rolling 5-hour rate limit window active so you get more usage during long sessions
+4. **Optionally installs companion tools** -- Claude HUD, Context7, Playwright, Caveman, Chrome integration
+5. **Shows a clear summary** of everything that changed
 
 Every step is explained in plain language. No config files to hunt down, no values to guess.
 
@@ -68,6 +69,12 @@ Every step is explained in plain language. No config files to hunt down, no valu
 | `CLAUDE_CODE_NO_FLICKER=1` | Smooth screen rendering |
 | `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1` | Disable telemetry and background network |
 | `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` | Multi-agent coordination |
+
+### Rate Limit Optimization
+
+| Feature | What it does |
+|---------|-------------|
+| Session timer bump | Automatic 3-hour ping that keeps the rolling 5-hour rate limit window active for more usage during long sessions |
 
 ### Optional Plugins
 

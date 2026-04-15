@@ -24,6 +24,10 @@ Use this format to display the final summary after all changes are applied.
 | CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC | {old or none} | 1     |
 | CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS   | {old or none} | 1       |
 
+## Session Timer Bump
+
+{Show "Active — bumps every 3 hours to keep rolling 5-hour rate limit window active (auto-expires in 7 days)" if the user opted in, or "Not set up — skipped" if declined}
+
 ## Optional Plugins Installed
 
 {List each installed plugin with a one-line description, or "None — skipped" if the user declined}
