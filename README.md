@@ -49,7 +49,7 @@ The wizard walks you through every step:
 
 1. **Detects current settings** and shows what's missing
 2. **Applies 8 proven performance fixes** -- max effort, deep thinking, smooth rendering, agent teams, and more
-3. **Sets up a session timer bump** -- keeps the rolling 5-hour rate limit window active so you get more usage during long sessions
+3. **Sets up a session timer bump** -- creates a persistent cloud routine via `/schedule` that keeps the rolling 5-hour rate limit window active indefinitely
 4. **Optionally installs companion tools** -- Claude HUD, Context7, Playwright, Caveman, Chrome integration
 5. **Shows a clear summary** of everything that changed
 
@@ -74,7 +74,7 @@ Every step is explained in plain language. No config files to hunt down, no valu
 
 | Feature | What it does |
 |---------|-------------|
-| Session timer bump | Persistent 3-hour ping that keeps the rolling 5-hour rate limit window active — survives restarts, auto-expires after 7 days |
+| Session timer bump | Cloud routine via `/schedule` — pings every 3 hours to keep the rolling 5-hour rate limit window active. Runs indefinitely on Anthropic's cloud, never expires |
 
 ### Optional Plugins
 

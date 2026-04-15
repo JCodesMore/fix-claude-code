@@ -54,20 +54,31 @@ After applying, show a short confirmation: what changed.
 
 ### Step 3: Session Timer Bump (Rate Limit Optimizer)
 
-After applying core fixes, offer to set up an automatic session timer bump.
+After applying core fixes, offer to set up a persistent scheduled routine for rate limit optimization.
 
-Use **AskUserQuestion** to ask: *"Would you like to set up a session timer bump? Claude Code uses a rolling 5-hour usage window for rate limits. This schedules a lightweight ping every 3 hours to keep that window rolling, so you get more usage out of long sessions before hitting rate limits. (yes/no)"*
+Use **AskUserQuestion** to ask: *"Would you like to set up a session timer bump? Claude Code uses a rolling 5-hour usage window for rate limits. This creates a persistent cloud routine that pings every 3 hours to keep that window rolling, so you get more usage before hitting rate limits. Unlike session-only timers, this runs indefinitely — even when your computer is off. (yes/no)"*
 
 If **no** — skip to Step 4.
 
-If **yes** — load **`references/session-timer.md`** for details. First use `CronList` to check for an existing session timer bump (avoid duplicates if the wizard runs twice). If none exists, use `CronCreate` to schedule the recurring bump:
+If **yes** — load **`references/session-timer.md`** for details. Since `/schedule` is a built-in interactive slash command, present the command to the user and ask them to run it:
 
-- **Cron expression:** `"17 */3 * * *"` (every 3 hours, offset from :00 per best practices)
-- **Prompt:** `"Session timer bump — keeping the rolling usage window active. No action needed."`
-- **Durable:** `true` (persists to `.claude/scheduled_tasks.json` — survives session restarts and auto-expires after 7 days)
-- **Recurring:** `true`
+Tell the user to paste this command:
 
-After creating, confirm to the user: the timer is set, it runs every 3 hours in the background, and it keeps the rolling 5-hour rate limit window active so they can get more done during long sessions. Mention that it auto-expires after 7 days and persists across session restarts. The user may want to re-run the wizard after 7 days to renew the timer.
+```
+/schedule
+```
+
+Then guide them through the interactive setup:
+- **Schedule:** Every 3 hours
+- **Prompt/task:** `"Session timer bump — keeping the rolling usage window active. No action needed."`
+
+The `/schedule` command creates a **cloud-hosted routine** managed at `claude.ai/code/routines`. It runs on Anthropic's infrastructure, survives session restarts, works even when the user's computer is off, and **never auto-expires**.
+
+After the user confirms the routine is created, explain:
+- It runs every 3 hours on Anthropic's cloud — no need to keep Claude Code open
+- They can view and manage it at `claude.ai/code/routines` or via `/schedule list`
+- To remove it later: `/schedule list` to find it, then delete from the routines dashboard
+- Daily run limits apply based on plan (Pro: 5/day, Max: 15/day, Team/Enterprise: 25/day)
 
 ### Step 4: Optional Plugin Improvements
 
@@ -113,6 +124,6 @@ End with an encouraging message — the user's Claude Code is now optimized.
 
 For detailed information loaded on-demand:
 - **`references/core-settings.md`** — Deep explanations, caveats, and sources for each core fix
-- **`references/session-timer.md`** — Rate limit optimization via session timer bump, cron syntax, and caveats
+- **`references/session-timer.md`** — Rate limit optimization via `/schedule` cloud routine — setup, management, and caveats
 - **`references/optional-plugins.md`** — Install instructions and setup guides for each optional tool
 - **`references/summary-template.md`** — Format template for the end-of-wizard recap
