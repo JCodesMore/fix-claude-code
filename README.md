@@ -1,4 +1,4 @@
-# fix-claude-code
+# Fix Claude Code
 
 <a href="https://github.com/JCodesMore/fix-claude-code/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" /></a> <a href="https://discord.gg/babcVNJBet"><img src="https://img.shields.io/discord/1400896964597383279?label=discord" alt="Discord" /></a>
 
