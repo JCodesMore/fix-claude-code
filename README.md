@@ -2,7 +2,15 @@
 
 <a href="https://github.com/JCodesMore/fix-claude-code/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" /></a> <a href="https://discord.gg/babcVNJBet"><img src="https://img.shields.io/discord/1400896964597383279?label=discord" alt="Discord" /></a>
 
-Interactive wizard that fixes and optimizes Claude Code performance. Sourced from dozens of community posts, official docs, and power user tips.
+An interactive Claude Code plugin that fixes and optimizes your Claude Code performance. Sourced from dozens of community posts, official docs, and power user tips.
+
+Run `/fixclaude` and the wizard handles the rest -- no jargon, no guesswork.
+
+## Demo
+
+[![Watch the demo](docs/demo-thumbnail.png)](https://youtu.be/PLACEHOLDER)
+
+> Click the image above to watch the full walkthrough on YouTube.
 
 ## Skills
 
@@ -37,14 +45,14 @@ claude --plugin-dir /path/to/fix-claude-code
 /fixclaude
 ```
 
-The wizard walks through every step:
+The wizard walks you through every step:
 
 1. **Detects current settings** and shows what's missing
 2. **Applies 8 proven performance fixes** -- max effort, deep thinking, smooth rendering, agent teams, and more
 3. **Optionally installs companion tools** -- Claude HUD, Context7, Playwright, Caveman, Chrome integration
 4. **Shows a clear summary** of everything that changed
 
-Every step is explained in plain language. No jargon. No guesswork.
+Every step is explained in plain language. No config files to hunt down, no values to guess.
 
 ## What Gets Fixed
 
@@ -70,6 +78,12 @@ Every step is explained in plain language. No jargon. No guesswork.
 | Playwright MCP | Browser-based self-testing |
 | Caveman | Shorter, more focused output |
 | Claude in Chrome | Control your browser from the terminal |
+
+## How It Works
+
+The plugin is a single interactive skill with no code dependencies. It reads your current `~/.claude/settings.json`, shows you what's missing, and merges in the recommended values -- preserving everything else in your config.
+
+Optional plugins are presented one at a time so you can pick what you want. MCP servers (Context7, Playwright) are installed automatically. Plugins that require interactive commands (Claude HUD, Caveman) give you the exact command to paste.
 
 ## Credits
 
