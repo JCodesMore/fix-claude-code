@@ -8,7 +8,7 @@ Run `/fixclaude` and the wizard handles the rest -- no jargon, no guesswork.
 
 ## Demo
 
-[![Watch the demo](docs/demo-thumbnail.png)](https://youtu.be/tqOuwJtR5EY)
+[![Watch the demo](docs/thumbnail.png)](https://youtu.be/tqOuwJtR5EY)
 
 > Click the image above to watch the full walkthrough on YouTube.
 
