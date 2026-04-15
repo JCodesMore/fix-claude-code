@@ -1,0 +1,19 @@
+{
+  "name": "fix-claude-code",
+  "version": "0.1.0",
+  "description": "Interactive wizard that fixes and optimizes Claude Code performance -- sourced from dozens of community posts and official docs.",
+  "author": {
+    "name": "JCodesMore",
+    "url": "https://github.com/JCodesMore"
+  },
+  "homepage": "https://github.com/JCodesMore/fix-claude-code",
+  "repository": "https://github.com/JCodesMore/fix-claude-code",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "performance",
+    "settings",
+    "optimization",
+    "wizard"
+  ]
+}
