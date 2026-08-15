@@ -1,8 +1,10 @@
 # Fix Claude Code
 
-<a href="https://github.com/JCodesMore/fix-claude-code/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" /></a> <a href="https://discord.gg/babcVNJBet"><img src="https://img.shields.io/discord/1400896964597383279?label=discord" alt="Discord" /></a>
+<a href="https://github.com/JCodesMore/fix-claude-code/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" /></a>
 
 An interactive Claude Code plugin that fixes and optimizes your Claude Code performance. Sourced from dozens of community posts, official docs, and power user tips.
+
+[![Discord](https://img.shields.io/badge/Join_the_community-Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/hrTSX5yTpB)
 
 Run `/fixclaude` and the wizard handles the rest -- no jargon, no guesswork.
 
